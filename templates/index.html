@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cover Letter Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Cover Letter Generator</h1>
+            <p>Upload your student profile and enter the job details to generate a professional cover letter.</p>
+        </header>
+
+        <main>
+            <form id="analyzer-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="student-name">Student Name:</label>
+                    <input type="text" id="student-name" name="student_name" placeholder="e.g., Emily Rios" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resume-upload">Upload Student Profile (PDF):</label>
+                    <input type="file" id="resume-upload" name="resume" accept=".pdf" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-name">Company Name:</label>
+                    <input type="text" id="company-name" name="company_name" placeholder="e.g., Google" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-address">Company Address:</label>
+                    <input type="text" id="company-address" name="company_address" placeholder="e.g., 1600 Amphitheatre Pkwy" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="position">Position Title:</label>
+                    <input type="text" id="position" name="position" placeholder="e.g., Data Analyst Intern" required>
+                </div>
+
+                <button type="submit" id="submit-btn">Generate Cover Letter</button>
+            </form>
+
+            <div id="loading" class="hidden">
+                <p>Analyzing profile and generating your cover letter... 🤖</p>
+            </div>
+
+            <div id="results-section" class="hidden">
+                <div class="result-card">
+                    <h2>Generated Cover Letter</h2>
+                    <textarea id="cover-letter-output" rows="15" readonly></textarea>
+                    <button id="copy-btn" class="secondary-btn">Copy to Clipboard</button>
+                </div>
+            </div>
+            <div class="result-card">
+                <h2>Generated Cover Letter</h2>
+                <textarea id="cover-letter-output" rows="15" readonly></textarea>
+                
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button id="copy-btn" class="secondary-btn" type="button">Copy to Clipboard</button>
+                    <button id="download-btn" class="secondary-btn" type="button" style="background-color: #27ae60;">Download as PDF 📥</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
